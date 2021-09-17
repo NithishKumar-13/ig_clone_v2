@@ -1,0 +1,61 @@
+.user-stats {
+    display: flex;
+    width: 70rem;
+    margin: 3rem auto 1rem;
+    gap: 5rem;
+
+    &__img {
+        height: 15rem;
+        width: 15rem;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    &__username {
+        font-size: 3rem;
+        font-weight: 300;
+    }
+
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    &__btn {
+        all: unset;
+        margin-top: 1rem;
+        padding: .4rem 2rem;
+        font-size: 1.3rem;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &--unfollow {
+            border: 1px solid rgba(219,219,219,1);
+        }
+
+        &--follow {
+            background: #0095F6;
+            color: #fff;
+        }
+    }
+
+    &__data {
+        display: flex;
+        gap: 4rem;
+        margin-top: 1rem;
+
+        &--count {
+            color: rgb(66, 65, 65);
+            font-weight: 700;
+            margin-right: .5rem;
+        }
+    }
+
+    &__fullname {
+        font-size: 1.7rem;
+        font-weight: 600;
+        margin-top: 3rem;
+    }
+}

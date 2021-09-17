@@ -4,6 +4,7 @@ import './App.scss'
 import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
 import Dashboard from './components/Dashboard/Dashboard'
+import Profile from './components/Profile/Profile'
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
                 <Route exact path='/' component={Dashboard} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={Signup} />
+                <Route exact path='/profile/:username' component={Profile} />
             </Switch>
         </Router>
     )
