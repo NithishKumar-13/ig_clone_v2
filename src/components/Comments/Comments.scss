@@ -1,0 +1,23 @@
+.comments {
+    padding: 1rem;
+    padding-top: 0;
+
+    small {
+        color: #555757;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &--username {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        &--comment {
+            font-size: 1.4rem;
+        }
+    }
+}
