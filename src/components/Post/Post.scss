@@ -1,0 +1,66 @@
+.post {
+    background: #fff;
+    border: 1px solid rgba(219,219,219,1);
+    min-height: 55rem;
+    width: 55rem;
+    margin-bottom: 3rem;
+    position: relative;
+
+    &__avatar {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 1.5rem;
+    }
+
+    &__header {
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(219,219,219,1);
+    }
+
+    &__user-name {
+        font-weight: 600;
+        font-size: 1.4rem;
+    }
+
+    &__actions {
+        padding: 1rem;
+        padding-bottom: 0;
+    }
+
+    &__action {
+        height: 2.5rem;
+
+        &--dots {
+            margin-left: auto;
+        }
+
+        &--likes, &--comments {
+            margin-right: .7rem;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        max-width: 100%;
+        min-height: 40rem;
+        max-height: auto;
+        object-fit: cover;
+    }
+
+    &__footer {
+        padding: .3rem 1rem 0;
+    }
+
+    &__comment-title {
+        font-size: 1.45rem;
+    }
+
+    &__caption {
+        display: flex;
+        gap: 1rem;
+    }
+}
