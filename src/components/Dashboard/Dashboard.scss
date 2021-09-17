@@ -1,0 +1,12 @@
+.dashboard {
+    min-height: 100vh;
+    width: 100%;
+    background: #fafafa;
+}
+
+.dashboard-container {
+    display: flex;
+    max-width: 95rem;
+    margin: 5rem auto 0;
+    gap: 4rem;
+}
