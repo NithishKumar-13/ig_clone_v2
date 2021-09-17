@@ -1,0 +1,38 @@
+.add-comment {
+    padding: 1rem;
+    border-top: 1px solid rgba(219,219,219,1);
+    display: flex;
+
+    &__emoji {
+        height: 3rem;
+        cursor: pointer;
+    }
+
+    &__input {
+        all: unset;
+        padding: 0 1rem;
+        margin-right: auto;
+    }
+
+    &__btn {
+        all: unset;
+        font-size: 1.45rem;
+        font-weight: 600;
+      
+        &--active {
+            color: #0A99F6;
+        }
+
+        &--disabled {
+            font-size: 1.45rem;
+            color: lighten(#0A99F6, 30);
+        }
+    }
+}
+
+.emoji-picker {
+    position: absolute;
+    bottom: 5rem;
+    left: 0;
+    z-index: 4;
+}
