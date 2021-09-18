@@ -3,12 +3,14 @@ import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 import Comments from '../Comments/Comments'
 import AddComment from '../AddComment/AddComment'
+import { useModal } from '../../context/ModalContext'
 import { useParams } from 'react-router-dom'
 import './ViewPost.scss'
 
 const ViewPost = () => {
     const { postId } = useParams()
     const [postInfo, setPostInfo] = useState([])
+    const { setIsOpen } = useModal()
 
     useEffect(() => {
         const fetch_post = async() => {
@@ -44,6 +46,7 @@ const ViewPost = () => {
                   className="post__action post__action--dots"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
+                  onClick={() => setIsOpen(true)}
                 >
                   <title>Ellipsis Horizontal</title>
                   <circle
