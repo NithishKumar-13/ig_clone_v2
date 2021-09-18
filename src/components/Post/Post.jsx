@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { usePost } from "../../context/PostContext";
-import ViewPost from "../ViewPost/ViewPost";
+import { useModal } from "../../context/ModalContext";
 import Comments from "../Comments/Comments";
 import AddComment from "../AddComment/AddComment";
 import "./Post.scss";
@@ -12,8 +11,8 @@ const Post = ({ img_url, author, likes, post_id, is_liked }) => {
   const {
     user: { username },
   } = useAuth();
-  const { isOpen, setIsOpen } = usePost()
   const history = useHistory()
+  const { setIsOpen } = useModal()
   const [totalLikes,setTotalLikes] = useState(0)
 
   useEffect(() => {
@@ -37,7 +36,6 @@ const Post = ({ img_url, author, likes, post_id, is_liked }) => {
   };
  
   const handleViewPost = () => {
-    setIsOpen(prevSt => !prevSt)
     history.push(`/p/${post_id}`)
   }
 
@@ -57,6 +55,7 @@ const Post = ({ img_url, author, likes, post_id, is_liked }) => {
             className="post__action post__action--dots"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
+            onClick={() => setIsOpen(true)}
           >
             <title>Ellipsis Horizontal</title>
             <circle
@@ -171,7 +170,6 @@ const Post = ({ img_url, author, likes, post_id, is_liked }) => {
         <Comments commentFor={post_id} />
         <AddComment addComment={addComment} />
       </div>
-      {isOpen && <ViewPost />}
     </>
   );
 };
