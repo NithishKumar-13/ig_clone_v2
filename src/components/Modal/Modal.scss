@@ -1,0 +1,47 @@
+.modal {
+    height: 100vh;
+    width: 100vh;
+
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,.7);
+    }
+
+    &__body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        height: auto;
+        min-width: 40rem;
+        background: #fff;
+        border-radius: 2rem;
+    }
+
+    &__lists {
+        list-style: none;
+    }
+
+    &__item {
+        text-align: center;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgb(219,219,219);
+        }
+    }
+
+    &__button {
+        all: unset;
+        padding: 1.3rem .5rem;
+        font-size: 1.4rem;
+
+        &--main {
+            font-weight: 700;
+            color: #ED4956;
+        }
+    }
+}
