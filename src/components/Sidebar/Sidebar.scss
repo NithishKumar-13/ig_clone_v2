@@ -1,0 +1,86 @@
+.sidebar {
+    min-width: 25rem;
+
+    &__img {
+        &--admin {
+            height: 5.5rem;
+            width: 5.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__profile {
+        &--username {
+            font-weight: 600;
+        }
+
+        &--name {
+            font-size: 1.33rem;
+            color: #555757;
+        }
+    }
+
+    &__suggestion-title {
+        color: #3c3d3d;
+        font-weight: 600;
+        margin: 1rem 0;
+    }
+
+    .user {
+        margin-top: 1.5rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        &__wrapper {
+            flex-basis: 20rem;
+            display: flex;
+        }
+
+        &__avatar {
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        &__info {
+            margin-left: 1rem;
+            margin-right: 2rem;
+            line-height: 1.4;
+
+            &--username {
+                font-weight: 600;
+                font-size: 1.4rem;
+            }
+
+            &--name {
+                font-size: 1.33rem;
+                color: #555757;
+            }
+        }
+
+        &__btn {
+            all: unset;
+            font-size: 1.3rem;
+            cursor: pointer;
+
+            &--follow {
+                color: #0495f5;
+                font-weight: 600;
+            }
+
+            &--following {
+                color: #555757;
+            }
+        }
+    }
+}
