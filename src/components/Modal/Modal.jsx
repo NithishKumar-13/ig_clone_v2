@@ -1,23 +1,35 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 import { useModal } from '../../context/ModalContext'
 import './Modal.scss'
 
-const Modal = ({ isAdminOpened }) => {
+const Modal = ({ postInfo }) => {
     const { isOpen, setIsOpen } = useModal()
+    const { user } = useAuth()
+    const history = useHistory()
 
     if(!isOpen) return null
+
+    const handleDeletePost = async(postId) => {
+      await axios.delete(`http://localhost:8080/p/${postId}`)
+      setIsOpen(false)
+      history.push('/')
+    }
 
     return ReactDOM.createPortal(
       <div className="modal">
         <div className="modal__overlay" onClick={() => setIsOpen(false)} />
         <div className="modal__body">
           <ul className="modal__lists">
-            {isAdminOpened ? (
+            {user.username === postInfo.author ? (
               <li className="modal__item">
                 <button
                   className="modal__button modal__button--main"
                   tabIndex="0"
+                  onClick={() => handleDeletePost(postInfo.post_id)}
                 >
                   Delete
                 </button>
