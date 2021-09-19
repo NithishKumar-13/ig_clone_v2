@@ -19,6 +19,11 @@ const Modal = ({ postInfo }) => {
       history.push('/')
     }
 
+    const handleViewPost = (post) => {
+      setIsOpen(false)
+      history.push(`/p/${post}`)
+    }
+
     return ReactDOM.createPortal(
       <div className="modal">
         <div className="modal__overlay" onClick={() => setIsOpen(false)} />
@@ -46,7 +51,7 @@ const Modal = ({ postInfo }) => {
             )}
 
             <li className="modal__item">
-              <button className="modal__button" tabIndex="0">
+              <button className="modal__button" tabIndex="0" onClick={() => handleViewPost(postInfo.post_id)}>
                 Go to post
               </button>
             </li>
