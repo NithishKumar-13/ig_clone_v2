@@ -5,9 +5,10 @@ import { useAuth } from "../../context/AuthContext";
 import { useModal } from "../../context/ModalContext";
 import Comments from "../Comments/Comments";
 import AddComment from "../AddComment/AddComment";
+import Modal from "../Modal/Modal";
 import "./Post.scss";
 
-const Post = ({ img_url, author, likes, post_id, is_liked }) => {
+const Post = ({ img_url, author, post_id, is_liked }) => {
   const {
     user: { username },
   } = useAuth();
@@ -170,6 +171,7 @@ const Post = ({ img_url, author, likes, post_id, is_liked }) => {
         <Comments commentFor={post_id} />
         <AddComment addComment={addComment} />
       </div>
+      <Modal postInfo={{ img_url, post_id, author, is_liked }} />
     </>
   );
 };
