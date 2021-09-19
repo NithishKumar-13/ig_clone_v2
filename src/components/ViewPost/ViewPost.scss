@@ -13,11 +13,13 @@
         grid-template-columns: 65% 35%;
         width: 85rem;
         min-height: 50rem;
+        max-height: 50rem;
         border: 1px solid rgb(219, 219, 219);
         background: #fff;
 
         &__img {
             height: 100%;
+            max-height: 50rem;
             max-width: 100%;
             object-fit: cover;
         }
