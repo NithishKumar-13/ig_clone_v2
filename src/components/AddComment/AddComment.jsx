@@ -9,7 +9,7 @@ const AddComment = ({ addComment }) => {
   const [isEmojiShown, setIsEmojiShown] = useState(false);
 
   useEffect(() => {
-    if (!comment.length) {
+    if (!comment.trim().length) {
       setIsError(true);
     } else {
       setIsError(false);
