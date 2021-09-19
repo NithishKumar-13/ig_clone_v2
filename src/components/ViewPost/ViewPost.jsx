@@ -3,6 +3,7 @@ import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 import Comments from '../Comments/Comments'
 import AddComment from '../AddComment/AddComment'
+import Modal from '../Modal/Modal'
 import { useModal } from '../../context/ModalContext'
 import { useParams } from 'react-router-dom'
 import './ViewPost.scss'
@@ -41,7 +42,7 @@ const ViewPost = () => {
                   }
                   alt="user profile"
                 />
-                <p className="user__username">{"nithish_170"}</p>
+                <p className="user__username">{postInfo.author}</p>
                 <svg
                   className="post__action post__action--dots"
                   xmlns="http://www.w3.org/2000/svg"
@@ -83,6 +84,7 @@ const ViewPost = () => {
             </div>
           </div>
         </div>
+        <Modal postInfo={postInfo} />
       </>
     );
 }
