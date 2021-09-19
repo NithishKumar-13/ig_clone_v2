@@ -5,7 +5,6 @@ import { useAuth } from "../../context/AuthContext";
 import { useModal } from "../../context/ModalContext";
 import Comments from "../Comments/Comments";
 import AddComment from "../AddComment/AddComment";
-import Modal from "../Modal/Modal";
 import "./Post.scss";
 
 const Post = ({ img_url, author, post_id, is_liked }) => {
@@ -36,8 +35,8 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
     });
   };
  
-  const handleViewPost = () => {
-    history.push(`/p/${post_id}`)
+  const handleViewPost = (post) => {
+    history.push(`/p/${post}`)
   }
 
   return (
@@ -92,7 +91,7 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
           src={img_url}
           alt="post"
           className="post__img"
-          onClick={handleViewPost}
+          onClick={() => handleViewPost(post_id)}
         />
         <div className="post__actions">
           {!is_liked ? (
@@ -171,7 +170,6 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
         <Comments commentFor={post_id} />
         <AddComment addComment={addComment} />
       </div>
-      <Modal postInfo={{ img_url, post_id, author, is_liked }} />
     </>
   );
 };
