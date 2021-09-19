@@ -14,7 +14,7 @@ const TimeLine = () => {
       const response = await axios.get(
         `http://localhost:8080/following-users/posts/${id}`
       );
-      setPosts(response.data);
+      setPosts(response.data.sort((a,b) => (new Date(b.created_at) - new Date(a.created_at))));
     }
     fetchData();
   }, [id]);
