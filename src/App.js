@@ -6,6 +6,7 @@ import Login from './components/Login/Login'
 import Dashboard from './components/Dashboard/Dashboard'
 import Profile from './components/Profile/Profile'
 import ViewPost from './components/ViewPost/ViewPost'
+import NotFound from './components/NotFound/NotFound'
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/profile/:username' component={Profile} />
                 <Route exact path='/p/:postId' component={ViewPost} />
+                <Route path='*' component={NotFound} />
             </Switch>
         </Router>
     )
