@@ -7,11 +7,22 @@
     position: relative;
 
     &__avatar {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    &__border-wrapper {
         height: 4rem;
         width: 4rem;
         border-radius: 50%;
-        object-fit: cover;
+        padding: .2rem;
         margin-right: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
     }
 
     &__header {

@@ -44,11 +44,13 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
       <div className="post">
         <header className="post__header">
           <Link to={`/profile/${author}`}>
-            <img
-              src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fHVzZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt="user profile"
-              className="post__avatar"
-            />
+            <div className="post__border-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fHVzZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt="user profile"
+                className="post__avatar"
+              />
+            </div>
           </Link>
           <p className="post__user-name">{author}</p>
           <svg
