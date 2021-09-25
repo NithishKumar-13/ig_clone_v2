@@ -1,14 +1,14 @@
 import React from "react";
 import "./Userstats.scss";
 
-const Userstats = ({ username, totalPosts, followers, followings, fullName, isAdmin, isFollowing }) => {
-
+const Userstats = ({ username, img, totalPosts, followers, followings, fullName, isAdmin, isFollowing }) => {
+  
   return (
     <div className="user-stats">
       <div className="user-stats__left">
         <img
           className="user-stats__img"
-          src="https://images.pexels.com/photos/4100748/pexels-photo-4100748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          src={img}
           alt="user profile"
         />
       </div>
