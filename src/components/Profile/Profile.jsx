@@ -65,7 +65,7 @@ const Profile = () => {
     return (
         <>
             <Navbar />
-            {currentUser.length && <Userstats img={currentUser[0].user_img} username={username} totalPosts={currUserPosts.length} followers={totalFollowers} followings={totalFollowings} fullName={currentUser[0].full_name} isFollowing={isFollowing} isAdmin={user} />}
+            {currentUser.length && <Userstats img={currentUser[0].user_img} username={username} totalPosts={currUserPosts.length} followers={totalFollowers} followings={totalFollowings} fullName={currentUser[0].full_name} userId={currentUser[0].id} isFollowing={isFollowing} isAdmin={user} />}
             {currUserPosts.length && <Gallery posts={currUserPosts} />}
         </>
     )
