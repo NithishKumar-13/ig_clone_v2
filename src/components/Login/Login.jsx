@@ -4,12 +4,13 @@ import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 import Iphone from "../../assets/iphone-with-profile.jpg";
 import Logo from "../../assets/logo.png";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import "./Login.scss";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { dispatch } = useAuth();
+  const { error, isLoading, dispatch } = useAuth();
   const history = useHistory();
 
   useEffect(() => {
@@ -19,16 +20,27 @@ const Login = () => {
   const handleLogin = async (evt) => {
     evt.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:8080/user/login`, {
-        username,
-        password,
-      });
-      const userData = await dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: response.data,
-      });
-      console.log(userData);
-      history.push("/");
+      await dispatch({ type: 'LOGIN_START' })
+      setTimeout(async() => {
+        const response = await axios.post(`http://localhost:8080/user/login`, {
+          username,
+          password,
+        });
+        
+      if (!response.data.auth) {
+        await dispatch({
+          type: "LOGIN_FAILURE",
+          payload: response.data.message,
+        });
+      } else {
+        const userData = await dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: response.data.user,
+        });
+        history.push("/");
+      }
+      },3000)
+  
     } catch (err) {
       console.log(err);
       setUsername("");
@@ -65,9 +77,10 @@ const Login = () => {
                 placeholder="Password"
               />
               <button type="submit" className="login__cta login__cta--1">
-                Log In
+                {isLoading ? <LoadingSpinner /> : 'Log In'}
               </button>
             </form>
+          {error && <p className='login__error'>{error}</p>}
           </div>
           <div className="login__box login__box--2">
             <p>
