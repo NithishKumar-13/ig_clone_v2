@@ -12,10 +12,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { error, isLoading, dispatch } = useAuth();
   const history = useHistory();
+  const [isAllowed, setIsNotAllowed] = useState(true)
 
   useEffect(() => {
     document.title = "Login - Instagram";
   }, []);
+
+  useEffect(() => {
+    if(username.length && password.length) {
+      setIsNotAllowed(false)
+    } else {
+      setIsNotAllowed(true)
+    }
+  },[username,password])
 
   const handleLogin = async (evt) => {
     evt.preventDefault();
@@ -33,7 +42,7 @@ const Login = () => {
           payload: response.data.message,
         });
       } else {
-        const userData = await dispatch({
+        await dispatch({
           type: "LOGIN_SUCCESS",
           payload: response.data.user,
         });
@@ -76,7 +85,7 @@ const Login = () => {
                 className="login__input"
                 placeholder="Password"
               />
-              <button type="submit" className="login__cta login__cta--1">
+              <button type="submit" disabled={isAllowed} className={!isAllowed ? 'login__cta login__cta--1' : 'login__cta login__cta--disabled'}>
                 {isLoading ? <LoadingSpinner /> : 'Log In'}
               </button>
             </form>
