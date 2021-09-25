@@ -14,6 +14,9 @@ const reducer = (state, action) => {
     case "LOGIN_SUCCESS": {
       return { ...state, isLoading: false, error: null, user: action.payload };
     }
+    case 'LOGOUT': {
+      return { ...state, isLoading: false, error:null, user: null }
+    }
     default:
       return state;
   }
