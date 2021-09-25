@@ -19,7 +19,7 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
-    if(username.length && password.length) {
+    if(username.trim().length && password.trim().length) {
       setIsNotAllowed(false)
     } else {
       setIsNotAllowed(true)
