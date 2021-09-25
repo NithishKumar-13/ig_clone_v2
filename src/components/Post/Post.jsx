@@ -14,6 +14,7 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
   const history = useHistory()
   const { setIsOpen } = useModal()
   const [totalLikes,setTotalLikes] = useState(0)
+  const [userImg, setUserImg] = useState('')
 
   useEffect(() => {
     const get_likes = async() => {
@@ -22,6 +23,14 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
     }
     get_likes()
   },[post_id])
+
+  useEffect(() => {
+    const get_author_img = async() => {
+      const response = await axios.get(`http://localhost:8080/image/${author}`)
+      setUserImg(response.data.user_img)
+    }
+    get_author_img()
+  },[author])
 
   const handleLike = async (postid) => {
     await axios.post(`http://localhost:8080/likes`, { username, post_id: postid });
@@ -46,7 +55,7 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
           <Link to={`/profile/${author}`}>
             <div className="post__border-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fHVzZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                src={userImg}
                 alt="user profile"
                 className="post__avatar"
               />
@@ -160,12 +169,12 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
         </div>
         <footer className="post__footer">
           <p className="post__like-counts">
-            {totalLikes} likes {post_id}
+            {totalLikes} likes
           </p>
           <div className="post__caption">
             <p className="post__user-name">{author}</p>
             <p className="post__comment-title">
-              This is an awesome post {is_liked ? "yes" : "no"}
+              This is an awesome post
             </p>
           </div>
         </footer>
