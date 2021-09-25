@@ -1,11 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Logo from "../../assets/logo.png";
 import "./Navbar.scss";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, dispatch } = useAuth();
+  const history = useHistory()
+
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' })
+    history.push('/login')
+    localStorage.removeItem('user')
+  }
+
   return (
     <header className="header">
       <Link to="/">
@@ -30,6 +38,7 @@ const Navbar = () => {
             xmlns="http://www.w3.org/2000/svg"
             class="ionicon"
             viewBox="0 0 512 512"
+            onClick={handleLogout}
           >
             <title>Log Out</title>
             <path
