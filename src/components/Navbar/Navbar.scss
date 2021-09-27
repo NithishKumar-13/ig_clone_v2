@@ -12,34 +12,25 @@
         height: 3rem;
     }
 
-    &__cta {
-        all: unset;
-        cursor: pointer;
-
-        &--login {
-            background: #0095f6;
-            color: #fff;
-            padding: .5rem 1.5rem;
-            border-radius: 3px;
-        }
-
-        &--signup {
-            background: inherit;
-            color: rgb(29, 38, 48);
-            font-weight: 700;
-            margin-left: 1.3rem;
-        }
-    }
-
     &__user-name {
         font-weight: 700;
     }
 
+    &__user-pic {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-left: 1rem;
+    }
+
     &__profile {
         display: flex;
+        justify-content: center;
+        align-items: center;
 
         svg {
-            margin-left: 2rem;
+            margin-left: 1rem;
             height: 2.5rem;
             cursor: pointer;
         }

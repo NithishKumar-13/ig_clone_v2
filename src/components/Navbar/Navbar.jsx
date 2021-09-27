@@ -19,21 +19,12 @@ const Navbar = () => {
       <Link to="/">
         <img src={Logo} alt="Instagram logo" className="header__logo" />
       </Link>
-      {!user && (
-        <div className="header__links">
-          <Link className="header__cta header__cta--login" to="/login">
-            Log In
-          </Link>
-          <Link className="header__cta header__cta--signup" to="/signup">
-            Sign Up
-          </Link>
-        </div>
-      )}
       {user && (
         <div className="header__profile">
           <p className="header__greetings">
             Welcome, <span className="header__user-name">{user.username}</span>
           </p>
+          <img className='header__user-pic' src={user.user_img} alt='user profile' />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="ionicon"
