@@ -1,13 +1,13 @@
 import React from "react";
 import "./Sidebar.scss";
 
-const AdminProfile = ({ img, username, full_name }) => {
+const AdminProfile = ({ user_img, username, full_name }) => {
   return (
     <div className="sidebar__header">
       <img
         className="sidebar__img--admin"
-        src="https://images.pexels.com/photos/4100748/pexels-photo-4100748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-        alt=""
+        src={user_img}
+        alt="user profile"
       />
       <div className="sidebar__profile-info">
         <p className="sidebar__profile--username">{username}</p>
