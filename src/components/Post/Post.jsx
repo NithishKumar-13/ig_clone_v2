@@ -27,7 +27,7 @@ const Post = ({ img_url, author, post_id, is_liked }) => {
   useEffect(() => {
     const get_author_img = async() => {
       const response = await axios.get(`http://localhost:8080/image/${author}`)
-      setUserImg(response.data.user_img)
+      setUserImg(response.data)
     }
     get_author_img()
   },[author])
