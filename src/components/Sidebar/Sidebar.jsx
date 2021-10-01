@@ -7,39 +7,50 @@ import "./Sidebar.scss";
 
 const Sidebar = () => {
   const [suggestions, setSuggestions] = useState([]);
+  const [followingUsers, setFollowingUsers] = useState([])
+  const [users, setUsers] = useState([])
   const { user } = useAuth();
 
   useEffect(() => {
-    const getSuggestion = async () => {
-      const response = await axios.get(
-        `http://localhost:8080/suggestions/${user.id}`
-      );
-      setSuggestions(
-        response.data
-          .filter((u) => u.id !== user.id)
-          .map((data) => ({ ...data, is_following: false }))
-      );
-      console.log(response.data)
-    };
-    getSuggestion();
-  }, [user.id]);
+    const fetchFollowingUsers = async() => {
+      try {
+        const response = await axios.get(`http://localhost:8080/users/followings/${user.username}`)
+        setFollowingUsers(response.data)
+      } catch(err) {
+         console.log('Error : ', err )
+      }
+    }
 
-//   const handleFollowUser = async (followingid, followingusername) => {
-//     await axios.post(`http://localhost:8080/follow`, {
-//       user_id: user.id,
-//       following_id: followingid,
-//       following_username: followingusername,
-//     });
+    const fetchUsers = async() => {
+      try {
+        const response = await axios.get(`http://localhost:8080/users`)
+        setUsers(response.data)
+      } catch(err) {
+        console.log(`error ${err}`)
+      }
+    }
 
-//     const updatedSuggestions = [...suggestions].map((data) => {
-//       if (data.username === followingusername) {
-//         return { ...data, is_following: true };
-//       }
-//       return { ...data };
-//     });
-//     setSuggestions(updatedSuggestions);
-//   };
+    fetchFollowingUsers()
+    fetchUsers()
 
+     const getSuggestedUsers = () => {
+       const following_users = followingUsers.map((v) => {
+         return {
+           username: v.following_username,
+           full_name: v.following_fullName,
+         };
+       });
+       let res = [];
+       res = users.filter((user) => {
+         return !following_users.find((u) => {
+           return u.username === user.username;
+         });
+       });
+       return res;
+     };
+     setSuggestions(getSuggestedUsers())
+  },[user.username, followingUsers, users])  
+ 
   return (
     <aside className="sidebar">
       <AdminProfile {...user} />
@@ -51,13 +62,13 @@ const Sidebar = () => {
               <Link to={`/profile/${u.username}`}>
                 <img
                   className="user__avatar"
-                  src="https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                  src={u.user_img}
                   alt="user profile "
                 />
               </Link>
               <div className="user__info">
-                <p className="user__info--username">{u.following_username}</p>
-                <p className="user__info--name">{u.following_fullName}</p>
+                <p className="user__info--username">{u.username}</p>
+                <p className="user__info--name">{u.full_name}</p>
               </div>
             </div>
             <button
