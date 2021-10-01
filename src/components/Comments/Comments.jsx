@@ -4,7 +4,7 @@ import "./Comments.scss";
 
 const Comments = ({ commentFor }) => {
   const [comments, setComments] = useState([]);
-  const [isCommentsShown, setIsCommentsShown] = useState(false);
+  const [isCommentsShown, setIsCommentsShown] = useState(true);
 
   useEffect(() => {
     const getComment = async () => {
@@ -39,7 +39,7 @@ const Comments = ({ commentFor }) => {
                 </div>
               );
             })
-            .slice(0, 2)}
+            }
     </div>
   );
 };

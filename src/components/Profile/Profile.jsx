@@ -17,6 +17,10 @@ const Profile = () => {
     const { user } = useAuth()
 
     useEffect(() => {
+        document.title = `${username} - Profile`
+    },[username])
+
+    useEffect(() => {
         const get_current_user = async() => {
             const response = await axios.get(`http://localhost:8080/users/${username}`)
             setCurrentUser(response.data)
